@@ -1,0 +1,7 @@
+<project name = "banking">
+
+<echo message ="Good morning"/>
+
+<echo message ="Welcome to the bank"/>
+
+</project>

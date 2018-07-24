@@ -2,16 +2,12 @@
 - hosts: client
   sudo: yes
   tasks:
-
-  
   - name: docker installation
     action: yum name=docker state=present
-  
+
   - name: start services
     service: name=docker state=started
     notify: create jenkins container
-  
-
   handlers:
   - name: create jenkins container
     command: docker run -itd -p 8081:8080 jenkins

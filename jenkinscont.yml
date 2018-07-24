@@ -14,7 +14,7 @@
   - name: docker installation
     action: yum name=docker state=present
   
-  - name: start service
+  - name: start services
     service: name=docker state=started
     notify: create jenkins container
   

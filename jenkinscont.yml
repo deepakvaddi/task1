@@ -6,7 +6,7 @@
     action: yum name=docker state=present
 
   - name: start services
-    service: name=docker state=started
+    service: name=docker state=restarted
     notify: create jenkins container
   handlers:
   - name: create jenkins container

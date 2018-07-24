@@ -1,0 +1,24 @@
+---
+- hosts: client
+  sudo: yes
+  tasks:
+  - name: yum update
+    command: yum -y update
+  
+  - name: yum-utils
+    command: yum install yum-utils
+  
+  - name: config manager
+    command: yum-config-manager --enable rhui-us-east-2-rhel-server-extras 
+  
+  - name: docker installation
+    action: yum name=docker state=present
+  
+  - name: start service
+    service: name=docker state=started
+    notify: create jenkins container
+  
+
+  handlers:
+  - name: create jenkins container
+    command: docker run -itd -p 8081:8080 jenkins
